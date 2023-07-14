@@ -81,9 +81,9 @@ class Stud
     int rollno;
 
     public:
-    //polymorphism -> many forms -> overloading
+    //polymorphism -> many forms -> overloaded constructor
 
-        Stud()
+        Stud()   //signaturre should always be different except the name
         {   
             cout<<"construct 1"<<endl;
             SAP = -1;
@@ -119,19 +119,14 @@ class Stud
 
 
 
-
-
 //copy constructor: to create an instance which is a copy of another instance
 class Address
 {
-    
-
     public:
 
     string block;
-    int *p=NULL;
     int houseno;
-
+        
         Address()
         {
             cout<<"Default"<<endl;
@@ -143,30 +138,41 @@ class Address
             block = b;
             houseno =n;
         }
+        
+
 
 
         //copying the contents of another instance into a new instance
-        Address(Address &var)
-        {
-            block = var.block;
-            houseno = var.houseno;
-        }
+        //explicit 
+        // Address(Address &var)
+        // {
+        //     block = var.block;
+        //     houseno = var.houseno;
+        // }
 };
+
+
+//prakhar -> nagar , 2000
+//
 
 int main()
 {  
     Address prakhar("House1",1);    //2000
-    Address sanidhya;
+
+    //implicitly copy constructor ban raha hai
+    Address sanidhya1(prakhar);     
+    Address sanidhya = prakhar;
 
 
-    cout<<prakhar.block<<" "<<prakhar.houseno<<endl;
-    cout<<sanidhya.block<<" "<<sanidhya.houseno<<endl;
 
-    sanidhya.block = "Nagar";
-    sanidhya.houseno = 2;
+    // cout<<prakhar.block<<" "<<prakhar.houseno<<endl;
+    // cout<<sanidhya.block<<" "<<sanidhya.houseno<<endl;
 
-    prakhar = sanidhya;
+    // sanidhya.block = "Nagar";
+    // sanidhya.houseno = 2;
 
-    cout<<prakhar.block<<" "<<prakhar.houseno<<endl;
-    cout<<sanidhya.block<<" "<<sanidhya.houseno<<endl;
+    // prakhar = sanidhya;
+
+    // cout<<prakhar.block<<" "<<prakhar.houseno<<endl;
+    // cout<<sanidhya.block<<" "<<sanidhya.houseno<<endl;
 }
